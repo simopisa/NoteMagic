@@ -1,0 +1,431 @@
+﻿@page "/"
+@using NoteMagic.Data
+<div class="wrapper" style='background-image: url("img/wallpaper.jpg");'>
+    <div class="slidablediv">
+        <div class="page page-1">
+            <div class="weather-time-header">
+                <div class="time-date">
+                    <div class="time">
+                        @(TODAY.ToString("HH:mm"))
+                    </div>
+                    <div class="date">
+                        @(TODAY.ToString("ddd, MMM d"))
+                    </div>
+                </div>
+                <div class="weather" @onclick="()=>{VolumeUpAndDown.CAN_USE_VOLUME_KEY=!VolumeUpAndDown.CAN_USE_VOLUME_KEY;}">
+                    <div>☀️</div>
+                    <div class="weahter-scritta">Sunny 31°C</div>
+                </div>
+            </div>
+            <div class="google">
+                <div class="google-bar">
+                    <div class="google-logo" @onclick="Reset">
+                        <i class="fa-brands fa-google"></i>
+                    </div>
+                    <div class="micandcamera">
+                        <div class="mic" @onclick="()=>{Console.WriteLine(VolumeUpAndDown.COUNTER);}">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <div class="camera">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="icons">
+                <div class="icon icon-1">
+                    <div class="immagine" @onclick="()=>GetNumberFirstPage(1)">
+                        <img src="img/icons/gmail.png" />
+                    </div>
+                    <div class="descrizione">
+                        Gmail
+                    </div>
+                </div>
+                <div class="icon icon-2">
+                    <div class="immagine" @onclick="()=>GetNumberFirstPage(2)">
+                        <img src="img/icons/telegram.png" />
+                    </div>
+                    <div class="descrizione">
+                        Telegram
+                    </div>
+                </div>
+                <div class="icon icon-3">
+                    <div class="immagine" @onclick="()=>GetNumberFirstPage(3)">
+                        <img src="img/icons/spotify.png" />
+                    </div>
+                    <div class="descrizione">
+                        Spotify
+                    </div>
+                </div>
+                <div class="icon icon-4">
+                    <div class="immagine" @onclick="()=>GetNumberFirstPage(4)">
+                        <img src="img/icons/instagram.png" />
+                    </div>
+                    <div class="descrizione">
+                        Instagram
+                    </div>
+                </div>
+                <div class="icon icon-5">
+                    <div class="immagine" @onclick="()=>GetNumberFirstPage(5)">
+                        <img src="img/icons/netflix.png" />
+                    </div>
+                    <div class="descrizione">
+                        Netflix
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="page page-2">
+            <div class="noteHeader">
+                <div class="contai">
+                    <div class="plus">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="completed">
+                        <i class="fa-regular fa-square-check"></i>
+                    </div>
+                    <div class="microphone">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <div class="pencil">
+                        <i class="fa-solid fa-pen-fancy"></i>
+                    </div>
+                    <div class="camera">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="atgalance">
+                <div class="galance">
+                    @(TODAY.ToString("dddd,  MMM d")) <div class="sun"></div> 31°C
+                </div>
+            </div>
+            <div class="icons">
+                <div class="icon icon-1">
+                    <div class="immagine" @onclick="()=>GetNumberSecondPage(1)">
+                        <img src="img/icons/hype.png" />
+                    </div>
+                    <div class="descrizione">
+                        Hype
+                    </div>
+                </div>
+                <div class="icon icon-2">
+                    <div class="immagine" @onclick="()=>GetNumberSecondPage(2)">
+                        <img src="img/icons/lightroom.png" />
+                    </div>
+                    <div class="descrizione">
+                        Lightroom
+                    </div>
+                </div>
+                <div class="icon icon-3">
+                    <div class="immagine" style="background-color:white" @onclick="()=>GetNumberSecondPage(3)">
+                        <img src="img/icons/chrome.png" />
+                    </div>
+                    <div class="descrizione">
+                        Chrome
+                    </div>
+                </div>
+                <div class="icon icon-4">
+                    <div class="immagine" @onclick="()=>GetNumberSecondPage(4)">
+                        <img src="img/icons/deliveroo.jpg" />
+                    </div>
+                    <div class="descrizione">
+                        Deliveroo
+                    </div>
+                </div>
+                <div class="icon icon-5">
+                    <div class="immagine" @onclick="OpenNotes">
+                        <img src="img/icons/keep.png" />
+                    </div>
+                    <div class="descrizione">
+                        Note
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* <div class="page page-3">
+        aaaa
+        </div>*@
+    </div>
+    <div class="fixedFooter">
+        <div class="icons">
+            <div class="icon icon-1">
+                <div class="immagine" @onclick="()=>GetNumberSecondPage(5)">
+                    <img src="img/icons/phone.png" />
+                </div>
+
+            </div>
+            <div class="icon icon-2">
+                <div class="immagine" @onclick="()=>GetNumberSecondPage(6)">
+                    <img src="img/icons/messages.png" />
+                </div>
+
+            </div>
+            <div class="icon icon-3">
+                <div class="immagine" @onclick="()=>GetNumberSecondPage(7)">
+                    <img src="img/icons/whatsapp.png" />
+                </div>
+
+            </div>
+            <div class="icon icon-4">
+                <div class="immagine" @onclick="()=>GetNumberSecondPage(8)">
+                    <img src="img/icons/gallery.jpg" />
+                </div>
+
+            </div>
+            <div class="icon icon-5">
+                <div class="immagine" @onclick="()=>GetNumberSecondPage(9)">
+                    <img src="img/icons/camera.png" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="noteApp" style="@(isNoteOpen ? "" : "display: none")">
+
+
+        <div class="noteheaderr">
+            <div class="searchbar">
+                <div class="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="TextSearch">Search your notes</div>
+                <div class="quad" @onclick="()=>{isNoteOpen=false; StateHasChanged();}">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                </div>
+            </div>
+        </div>
+        <div class="noteBody">
+            <div class="nota">
+                <div class="title">
+                    Lista della Spesa
+                </div>
+                <div class="content-s">
+                    Cereali, <br />
+                    Biscotti, <br />
+                    Nutella❤, <br />
+                    Latte
+                 </div>
+            </div>
+
+            <div class="nota">
+                <div class="title">
+                    ToDos:
+                </div>
+                <div class="content-s">
+                   Finire app per NightLife<br />
+                   Creare weedAdvisor
+                </div>
+            </div>
+
+            <div class="nota" @onclick="OpenNota">
+                 <div class="title">
+                    Previsione
+                </div>
+                <div class="content-s">
+                    @foreach (var carta in carte)
+                    {
+                        <div class="carta">@(indiceStampaCarte): @(carta)</div>
+                        indiceStampaCarte++;
+                    }
+                    @{
+                        indiceStampaCarte = 1;
+                    }
+                </div>
+            </div>
+
+            <div class="nota">
+                <div class="title">
+                    Animali mitologici
+                </div>
+                <div class="content-s">
+                    Manotauro<br />
+                    Mauno<br />
+                    TardoPardo<br />
+                    OrangoMango<br />
+                    ManoSordo<br />
+                </div>
+            </div>
+        </div>
+
+        <div class="noteFooter">
+            <div class="plus">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="completed">
+                <i class="fa-regular fa-square-check"></i>
+            </div>
+            <div class="microphone">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+            <div class="pencil">
+                <i class="fa-solid fa-pen-fancy"></i>
+            </div>
+            <div class="camera">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <div class="notaFull" style="@(showFullNota ? "" : "display: none")">
+        <div class="notaFullHeader">
+            <div class="back" @onclick="OpenNota">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="other">
+                <i class="fa-solid fa-thumbtack"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-inbox"></i>
+
+            </div>
+
+        </div>
+        <div class="notaFullBody">
+            <div class="notaFullTitle">
+                Previsione
+            </div>
+            <div class="notaFullContent">
+                @foreach (var carta in carte)
+                {
+                    <div class="carta">@(indiceStampaCarte): @(carta)</div>
+                    indiceStampaCarte++;
+                }
+                @{
+                    indiceStampaCarte = 1;
+                }
+            </div>
+        </div>
+        <div class="notaFullFooter">
+            <div class="comamnds">
+                <i class="fa-regular fa-square-plus"></i>
+            </div>
+            <div class="more">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="semipicker" style="@(!semiPicked ? "" : "display:none; pointer-events:none; z-index:-7")">
+    <div class="semi cuori" @onclick="()=>PickSeme(1)"></div>
+    <div class="semi quadri" @onclick="()=>PickSeme(2)"></div>
+    <div class="semi fiori" @onclick="()=>PickSeme(3)"></div>
+    <div class="semi picche" @onclick="()=>PickSeme(4)"></div>
+</div>
+
+@code {
+    public DateTime TODAY { get; set; } = DateTime.Now;
+
+    public int indiceStampaCarte { get; set; } = 1;
+
+    public string num1 { get; set; } = "0";
+    public string num2 { get; set; } = "0";
+    public int index { get; set; } = 0;
+
+    public bool isNoteOpen { get; set; } = false;
+
+    public string[] carte = new string[52];
+    public bool showFullNota { get; set; } = false;
+
+    public bool semiPicked { get; set; } = false;
+    public string seme { get; set; } = "";
+    protected override async Task OnInitializedAsync()
+    {
+        TODAY = DateTime.Now;
+        StateHasChanged();
+
+        await Task.Run(() =>
+        {
+            int idx = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 1; j <= 13; j++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            carte[idx] = (j == 11 ? "J" : (j == 12 ? "Q" : (j == 13 ? "K" : (j == 1 ? "A" : j)))) + " ❤";
+                            break;
+                        case 1:
+                            carte[idx] = (j == 11 ? "J" : (j == 12 ? "Q" : (j == 13 ? "K" : (j == 1 ? "A" : j)))) + " ♦️";
+                            break;
+                        case 2:
+                            carte[idx] = (j == 11 ? "J" : (j == 12 ? "Q" : (j == 13 ? "K" : (j == 1 ? "A" : j)))) + " ♣︎";
+                            break;
+                        case 3:
+                            carte[idx] = (j == 11 ? "J" : (j == 12 ? "Q" : (j == 13 ? "K" : (j == 1 ? "A" : j)))) + " ♠️";
+                            break;
+
+                    }
+                    idx++;
+                }
+            }
+        });
+        Random rnd = new Random();
+        carte = carte.OrderBy(x => rnd.Next()).ToArray();
+
+    }
+    public void PickSeme(int scelta){
+        switch (scelta)
+        {
+            case 1:
+                seme = " ❤";
+                break;
+            case 2:
+                seme = " ♦️";
+                break;
+            case 3:
+                seme = " ♣︎";
+                break;
+            case 4:
+                seme = " ♠️";
+                break;
+
+        }
+        semiPicked=true;
+        StateHasChanged();
+    }
+    public void Reset()
+    {
+        num1 = "0";
+        num2 = "0";
+        index = 0;
+        VolumeUpAndDown.COUNTER = 0;
+        semiPicked = false;
+        StateHasChanged();
+    }
+
+    public void GetNumberFirstPage(int n)
+    {
+        num1 = n.ToString();
+    }
+
+    public void GetNumberSecondPage(int n)
+    {
+        num2 = n.ToString();
+    }
+
+    public void OpenNotes()
+    {
+        string cartascelta = (VolumeUpAndDown.COUNTER == 11 ? "J" : (VolumeUpAndDown.COUNTER == 12 ? "Q" : (VolumeUpAndDown.COUNTER == 13 ? "K" : (VolumeUpAndDown.COUNTER == 1 ? "A" : VolumeUpAndDown.COUNTER)))) + seme;
+        index = Convert.ToInt32((num1 + num2)) -1;
+        var tempidx = Array.IndexOf(carte, cartascelta);
+        var temp = carte[index];
+        carte[index]=carte[tempidx];
+        carte[tempidx] = temp;
+
+
+        isNoteOpen = true;
+        StateHasChanged();
+        Console.WriteLine(index);
+    }
+
+    public void OpenNota(){
+        showFullNota = !showFullNota;
+        StateHasChanged();
+    }
+}
